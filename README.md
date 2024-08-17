@@ -29,7 +29,7 @@ The analysis was performed on a dataset containing raw domain sales and budget d
   
 - **Monthly Sales Trends**: Sales trends across the three years show fluctuations, with noticeable peaks in certain months such as May 2014, May 2015, and May 2016.
 
-![Sales Overview](path/to/sales_overview_image.png)
+![Power BI Dashboard for Sales Overview](Images/sales_over_yrs.png)
 
 ### Budget vs. Sales Analysis
 
@@ -39,7 +39,47 @@ The analysis was performed on a dataset containing raw domain sales and budget d
   
 - **Consistent Negative Variance**: The Hydration Pack (70 oz.) consistently exceeded the budget, suggesting an underestimation of sales.
 
-![Budget vs Sales](path/to/budget_vs_sales_image.png)
+```python
+
+
+df_accessories = df_variance_final[df_variance_final['Category'] == 'Accessories']
+
+num_products = len(df_accessories)
+
+
+fig, axes = plt.subplots(nrows=num_products, ncols=1, figsize=(12, num_products * 3))
+sns.set(style="whitegrid")
+colors = sns.color_palette("husl", num_products) 
+
+if num_products == 1:
+    axes = [axes]
+
+
+for i, (index, row) in enumerate(df_accessories.iterrows()):
+    product_name = row['ProductName']
+    variance_data = row.iloc[4:]  # Variance columns (all month columns)
+
+    # Plotting on the respective axis
+    axes[i].plot(variance_data, marker='o', label=product_name,color=colors[i])
+    axes[i].axhline(y=0, color='black', linestyle='--', linewidth=1)
+    axes[i].set_title(f'Variance (Budget - Sales) for {product_name} (2016)')
+    axes[i].set_xlabel('Month')
+    axes[i].set_ylabel('Variance')
+    axes[i].legend(loc='upper left')
+    axes[i].set_xticklabels(variance_data.index, rotation=45)
+
+# Adjust layout to avoid overlap
+fig.suptitle('Variance Analysis of Accessories (2016)', fontsize=16)
+plt.tight_layout(rect=[0, 0, 1, 0.96])
+plt.show()
+```
+
+![Budget vs Sales](Images\variance_1.png)
+
+![Budget vs Sales](Images\variance_2.png)
+
+![Budget vs Sales](Images\variance_4.png)
+
 
 ### Sales Performance by Product
 
@@ -49,13 +89,18 @@ The analysis was performed on a dataset containing raw domain sales and budget d
   
 - **Growth Opportunities**: Expanding the product line or introducing new features within the top-performing series could drive further sales.
 
-![Sales Performance by Product](path/to/sales_performance_image.png)
+![Power Bi desktop for the sales performance by products ](Images\sales_by_region&product.png)
 
 ### Customer Demographics
 
 - **Geographical Sales Insights**: Strong sales were observed in regions like Australia and the United States, indicating market dominance in these areas. Strategic investments in marketing and inventory for these regions could enhance profitability and market share.
 
-![Customer Demographics](path/to/customer_demographics_image.png)
+![Customer Demographics](Images\sales_map.png)
+
+### KPI and Growth
+ Sales growth rate over the year 2014 - 2016
+
+ ![KPI](Images\KPI.png)
 
 ## Conclusion and Recommendations
 
@@ -73,3 +118,4 @@ The analysis was performed on a dataset containing raw domain sales and budget d
 - **Budget vs. Sales**
 - **Sales Performance by Product**
 - **Customer Demographics**
+- **KPI And Growth**
