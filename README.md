@@ -74,11 +74,11 @@ plt.tight_layout(rect=[0, 0, 1, 0.96])
 plt.show()
 ```
 
-![Budget vs Sales](Images\variance_1.png)
+![Budget vs Sales](Images/variance_1.png)
 
-![Budget vs Sales](Images\variance_2.png)
+![Budget vs Sales](Images/variance_2.png)
 
-![Budget vs Sales](Images\variance_4.png)
+![Budget vs Sales](Images/variance_4.png)
 
 
 ### Sales Performance by Product
@@ -89,18 +89,18 @@ plt.show()
   
 - **Growth Opportunities**: Expanding the product line or introducing new features within the top-performing series could drive further sales.
 
-![Power Bi desktop for the sales performance by products ](Images\sales_by_region&product.png)
+![Power Bi desktop for the sales performance by products ](Images/sales_by_region&product.png)
 
 ### Customer Demographics
 
 - **Geographical Sales Insights**: Strong sales were observed in regions like Australia and the United States, indicating market dominance in these areas. Strategic investments in marketing and inventory for these regions could enhance profitability and market share.
 
-![Customer Demographics](Images\sales_map.png)
+![Customer Demographics](Images/sales_map.png)
 
 ### KPI and Growth
  Sales growth rate over the year 2014 - 2016
 
- ![KPI](Images\KPI.png)
+ ![KPI](Images/KPI.png)
 
 ## Conclusion and Recommendations
 
